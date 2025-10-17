@@ -1,0 +1,77 @@
+.LeftPanel{
+    flex: 25%;
+    margin: 5px; 
+    border-radius: 5px;
+    box-shadow:  0 2px 8px rgba(42, 41, 43, 0.3),
+                0 6px 16px rgba(55, 54, 56, 0.15);
+}
+
+
+.LeftPanel h3 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.buttonsPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.startButton,
+.uploadeButton,
+.downloadFile {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.startButton {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+}
+
+.uploadeButton {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    display: none;
+}
+
+.downloadFile {
+    background: linear-gradient(45deg, #f1c40f, #f39c12);
+    display: none;
+}
+
+
+.startButton:hover {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(46, 175, 80, 0.5);
+}
+
+.uploadeButton:hover {
+    background: linear-gradient(45deg, #8e44ad, #9b59b6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(155, 90, 182, 0.5);
+}
+
+.downloadFile:hover {
+    background: linear-gradient(45deg, #f39c12, #f1c40f);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(241, 196, 15, 0.5);
+}
+
+
+.startButton:active,
+.uploadeButton:active,
+.downloadFile:active {
+    transform: translateY(0);
+    box-shadow: none;
+}

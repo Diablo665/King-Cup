@@ -1,0 +1,21 @@
+.startCard {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    margin: 20px 0;         
+  }
+  
+.startCard img {
+    max-width: 50%;        
+    height: auto;           
+    border-radius: 8px;    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  }
+  
+.CartsPanel {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;     
+    gap: 20px;           
+  }
