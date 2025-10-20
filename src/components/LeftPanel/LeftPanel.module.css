@@ -23,7 +23,8 @@
 
 .startButton,
 .uploadeButton,
-.downloadFile {
+.downloadFile,
+.deletedButton {
     padding: 15px 25px;
     border: none;
     border-radius: 8px;
@@ -36,36 +37,44 @@
 }
 
 .startButton {
-    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    background: linear-gradient(45deg, #4CAF50, #4CAF50); 
 }
 
 .uploadeButton {
-    background: linear-gradient(45deg, #9b59b6, #8e44ad);
-    display: none;
+    background: linear-gradient(45deg, #9C27B0, #9C27B0); 
+}
+
+.deletedButton {
+    background: linear-gradient(45deg, #b65959, #ad4444); 
 }
 
 .downloadFile {
-    background: linear-gradient(45deg, #f1c40f, #f39c12);
-    display: none;
+    background: linear-gradient(45deg, #FF9800, #FF9800); 
 }
 
 
 .startButton:hover {
-    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    background: linear-gradient(45deg, #4CAF50, #4CAF50); 
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(46, 175, 80, 0.5);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.5);
 }
 
 .uploadeButton:hover {
-    background: linear-gradient(45deg, #8e44ad, #9b59b6);
+    background: linear-gradient(45deg, #9C27B0, #9C27B0); 
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(155, 90, 182, 0.5);
+    box-shadow: 0 4px 8px rgba(156, 39, 153, 0.5);
+}
+
+.deletedButton:hover {
+    background: linear-gradient(45deg, #ad4d4d, #b13e3e); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(182, 90, 90, 0.5);
 }
 
 .downloadFile:hover {
-    background: linear-gradient(45deg, #f39c12, #f1c40f);
+    background: linear-gradient(45deg, #FF9800, #FF9800); 
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(241, 196, 15, 0.5);
+    box-shadow: 0 4px 8px rgba(255, 152, 15, 0.5);
 }
 
 
@@ -75,3 +84,4 @@
     transform: translateY(0);
     box-shadow: none;
 }
+
