@@ -4,16 +4,23 @@ import LeftPanel from './components/LeftPanel/LeftPanel';
 import CartsPanel from './components/CartsPanel/CartsPanel';
 import RightPanel from './components/RightPanel/RightPanel';
 import { useState } from 'react';
-import cardList from './cards.json';
+import { handleFileChange } from './utils/helper';
 import shuffleDeck from './utils/helper';
-
+import cardList from './cards.json';
+import { getInfoFromLocalSession } from './utils/helper';
 
 function App() {
+  const [isCustomCardAdd, setCustomCardAdd] = useState('notAdded')
 
-  const [cards, setCards] = useState(shuffleDeck(cardList));
+  const usedCards = getInfoFromLocalSession('selectedFile').length > 0 ?  () => {getInfoFromLocalSession('selectedFile'); setCustomCardAdd('added')} : cardList;
+
+  const [cards, setCards] = useState(shuffleDeck(usedCards));
   const [rules, setRules] = useState([]);
   const [isStartGame, setStartGame] = useState(false);
   const [isRuleAdd, setRuleAdd] = useState(false);
+  
+
+
 
   const updateCardList = () => {
     setCards(cards.slice(1))
@@ -21,23 +28,35 @@ function App() {
   }
 
   const resetGame = () => {
-    setCards(shuffleDeck(cardList));
+    setCards(shuffleDeck(usedCards));
     setRules([])
     setRuleAdd(false)
   }
 
   const stopGame = () => {
     setStartGame(false);
-    setCards(shuffleDeck(cardList));
+    setCards(shuffleDeck(usedCards));
+    setRules([])
+    setRuleAdd(false)
+    setCustomCardAdd('notAdded')
+  }
+
+  const startGame = () =>  {
+    setStartGame(true);
     setRules([])
     setRuleAdd(false)
   }
 
-  const startGame = () =>  {
-    setCards(shuffleDeck(cardList));
-    setStartGame(true);
-    setRules([])
-    setRuleAdd(false)
+  const customGame = (target) => {
+    handleFileChange(target)
+    .then(
+      (customCard) => {
+        setCustomCardAdd('added');
+        setCards(shuffleDeck(customCard));
+      },
+      () => setCustomCardAdd('error')
+    )
+    
   }
 
   const addRules = (newRules) => {
@@ -49,7 +68,7 @@ function App() {
     <div className="App">
       <Header title='King Cup'/>
       <main> 
-        <LeftPanel start={isStartGame} onStart={startGame} onStop={stopGame}/>
+        <LeftPanel start={isStartGame} onStart={startGame} onStop={stopGame} onAddCustomCard={customGame} isCustomCardAdd={isCustomCardAdd} setCustomCardAdded={setCustomCardAdd}/>
         <CartsPanel startGame={isStartGame} cards={cards} onCardTook={updateCardList} onRestart={resetGame} onAddRules={addRules} isRuleAdd={isRuleAdd}/>
         <RightPanel rules={rules}/>
       </main>
