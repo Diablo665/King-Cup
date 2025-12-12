@@ -1,11 +1,16 @@
 import styles from './Card.module.css';
 import RulesAddForm from '../RulesAddForm/RulesAddForm';
 import { useState } from 'react';
+import { nextStep, updateEndCardTook} from '../../store/cardInfoSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setisAllEndCardsTook } from '../../store/gameStatuses';
 
+const Card = ({ cardNumber, cardSuit, text, rules}) => {
 
-const Card = ({ cardNumber, cardSuit, text, rules, onAddRules, isRuleAdd, onCardTook }) => {
   const [isLeaving, setIsLeaving] = useState(false);
   const [isEntering, setIsEntering] = useState(true);
+  const dispatch = useDispatch();
+  const {isRuleAdd, endCards, endCardTookValue} = useSelector((state) => state.game)
 
   const handleCardClick = () => {
 
@@ -13,7 +18,11 @@ const Card = ({ cardNumber, cardSuit, text, rules, onAddRules, isRuleAdd, onCard
     setIsEntering(false);
     
     const timeoutId = setTimeout(() => {
-      onCardTook();
+      if(cardNumber in endCards){
+        dispatch(updateEndCardTook(cardNumber));
+        (endCards[cardNumber] === endCardTookValue[cardNumber] + 1 ) && dispatch(setisAllEndCardsTook(true))
+      }
+      dispatch(nextStep());
       setIsLeaving(false);
       setIsEntering(true);
     }, 500);
@@ -29,6 +38,8 @@ const Card = ({ cardNumber, cardSuit, text, rules, onAddRules, isRuleAdd, onCard
       isEntering && styles.isVisible,
     ].filter(cls => cls); 
   };
+
+
 
   return (
     <div className={getClasses().join(' ')}>
@@ -51,7 +62,7 @@ const Card = ({ cardNumber, cardSuit, text, rules, onAddRules, isRuleAdd, onCard
 
       {rules && !isRuleAdd && (
         <div className={styles.formContainer}>
-          <RulesAddForm onAddRules={onAddRules} />
+          <RulesAddForm />
         </div>
       )}
     </div>

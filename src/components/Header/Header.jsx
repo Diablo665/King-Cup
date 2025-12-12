@@ -1,5 +1,4 @@
 import styles from './Header.module.css';
-import { FaInfoCircle } from "react-icons/fa";
 
 const Header = ({title}) => {
     return (
@@ -7,7 +6,6 @@ const Header = ({title}) => {
             <h1> 
                 {title}
             </h1>
-            <FaInfoCircle className={styles.infoButton} onClick={() => alert('click')}/>
         </div>
     )
 }

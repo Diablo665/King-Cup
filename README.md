@@ -5,10 +5,13 @@
 ## Технологии
 
 - **React** — для создания пользовательского интерфейса
+- **Redux** - для хранения данных и управления ими
 - **CSS Modules** — для стилизации компонентов
 - **JavaScript/JSX** — для логики игры
 
-## Запуск
+## Как поиграть
+
+### Локально: 
 
 1. Клонируем репозиторий: 
 
@@ -21,6 +24,10 @@
     ``` npm run start ```
 
 ---
+
+### Онлайн:
+
+Сайт пожно открыть по этой ссылке: [King Cup](http://kingcup.ru/) 
 
 ## Кастомные карты
 
@@ -71,6 +78,7 @@
 
 ```
 │public/
+├── icon.ico (Иконка страницы)
 ├── index.html (Страница)
 ├── patternCard.json (Файл-шаблон для кастомных карт)
 │src/
@@ -81,6 +89,9 @@
 │   ├── CardPanel/ (Средня панель (Счётчик карт, карты, кнопки во время игры))
 │   │   ├── CardPanel.jsx
 │   │   └── CardPanel.module.css
+│   ├── EndCardInfo/ (Панель с информацией о картах)
+│   │   ├── EndCardInfo.jsx
+│   │   └── EndCardInfo.module.css
 │   ├── EndGame/ (Экран окончания игры)
 │   │   ├── EndGame.jsx
 │   │   └── EndGame.module.css
@@ -102,9 +113,16 @@
 │   ├── RulesAddFord/ (Окно для добавления правил (Появляется на определённых картах))
 │   │   ├── RulesAddFord.jsx
 │   │   └── RulesAddFord.module.css
+│   ├── SelectEndCard/ (Логика выбора кастомных карт)
+│   │   ├── SelectEndCard.jsx 
+│   │   └── SelectEndCard.module.css
 │   └── UploadInfo/ (Информация о загрузке файла)
 │       ├── UploadInfo.jsx
 │       └── UploadInfo.module.css
+├── store/ 
+│   ├── cardInfoSlice.js (Слайс для работы с картами во время игры)
+│   ├── gameStatuses.js 
+│   └── store.js
 ├── utils/ (Доп.функции)
 │   └── helpers.js
 ├── App.jsx 

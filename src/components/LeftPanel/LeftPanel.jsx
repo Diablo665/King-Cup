@@ -1,10 +1,21 @@
 import styles from './LeftPanel.module.css';
 import { useRef } from 'react';
-import {handleDownload} from '../../utils/helper';
 import UploadInfo from '../UploadInfo/UploadInfo';
-import { deleteInfoFromLocalSession } from '../../utils/helper';
+import SelectEndCard from '../SelectEndCard/SelectEndCard';
+import { getCardsList, handleFileChange, deleteInfoFromLocalSession, handleDownload} from '../../utils/helper';
+import { useDispatch, useSelector} from 'react-redux';
+import { updateStateBeforeGame, startGame, stopGame, setCustomCardAdded, setCards, setEndCards} from '../../store/cardInfoSlice';
+import { setisEndCardInfoOpen, setisAllEndCardsTook} from '../../store/gameStatuses';
+import EndCardInfo from '../EndCardInfo/EndCardInfo';
+import { MdOutlineExitToApp } from "react-icons/md";
+import { TbInfoSquare } from "react-icons/tb";
 
-const LeftPanel = ({ start, onStart, onStop, onAddCustomCard, isCustomCardAdd, setCustomCardAdded}) => {
+
+const LeftPanel = () => {
+    const dispatch = useDispatch();
+
+    const {customCardAdd, isStartGame} = useSelector((state) => state.game);
+    const {isSmallScreen, isEndCardInfoOpen} = useSelector((state) => state.statuses);
 
     const fileInputRef = useRef(null);
 
@@ -14,28 +25,59 @@ const LeftPanel = ({ start, onStart, onStop, onAddCustomCard, isCustomCardAdd, s
         }
     };
 
+    const customGame = (target) => {
+        handleFileChange(target)
+        .then(
+          (customCard) => {
+            dispatch(setCustomCardAdded('added'))
+            dispatch(setCards(customCard));
+          },
+          () => dispatch(setCustomCardAdded('error'))
+        )
+        
+      }
+
     const deleteUploadedCard = () => {
         deleteInfoFromLocalSession('selectedFile');
-        setCustomCardAdded('notAdded');
+        dispatch(setCustomCardAdded('notAdded'));
+        dispatch(setEndCards({endCards: {"K": 4}, endTook: {"K": 0}}))
+    }
+
+    const start = () => {
+        const {status, cards} = getCardsList();
+        dispatch(setCustomCardAdded(status))
+        dispatch(updateStateBeforeGame(cards));
+        dispatch(setisAllEndCardsTook(false))
+        dispatch(startGame());
+    }
+
+    const stop = () => {
+        dispatch(stopGame());
+        const cards = getCardsList();
+        dispatch(setCards(cards['cards']));
+    }
+
+    const openCardInfo = () => {
+        dispatch(setisEndCardInfoOpen());
     }
 
     return (
         <div className={styles.LeftPanel}>
             <h3>Управление</h3>
 
-            <div className={styles.buttonsPanel}>
-                {!start ? (
+            <div className={!isStartGame || !isSmallScreen ? styles.buttonsPanel : styles.mobileGameButtonPanel}>
+                {!isStartGame ? (
                     <>
                         <input
                             type="file"
                             ref={fileInputRef}
                             style={{ display: 'none' }}
-                            onChange={onAddCustomCard}
+                            onChange={customGame}
                             />
 
                         <button 
                             className={styles.startButton} 
-                            onClick={() => onStart()}
+                            onClick={start}
                         >
                             Начать игру
                         </button>
@@ -46,7 +88,7 @@ const LeftPanel = ({ start, onStart, onStop, onAddCustomCard, isCustomCardAdd, s
                         >
                             Загрузить свои карты
                         </button>
-                        {isCustomCardAdd === 'added' ? (
+                        {customCardAdd === 'added' ? (
                         <button 
                             className={styles.deletedButton}
                             onClick={deleteUploadedCard}
@@ -54,7 +96,7 @@ const LeftPanel = ({ start, onStart, onStop, onAddCustomCard, isCustomCardAdd, s
                             Удалить загруженные карты
                         </button>
                         ) : ''}
-                        <UploadInfo isCustomCardAdd={isCustomCardAdd}/>
+                        <UploadInfo isCustomCardAdd={customCardAdd}/>
                         <button 
                             className={styles.downloadFile}
                             onClick={handleDownload}
@@ -63,16 +105,24 @@ const LeftPanel = ({ start, onStart, onStop, onAddCustomCard, isCustomCardAdd, s
                         </button>
                     </>
                 ) : (
-                    
-                        <button 
-                            className={styles.startButton} 
-                            onClick={() => onStop()}
+                        <> 
+
+                        {isSmallScreen ? <><MdOutlineExitToApp className={styles.endButton} onClick={stop}/> {isEndCardInfoOpen && <EndCardInfo/>} <TbInfoSquare className={styles.infoCardButton} onClick={openCardInfo}/> </> : <><button 
+                            className={styles.endButton} 
+                            onClick={stop}
                         >
                             Завершить игру
-                        </button>
+                        </button> <EndCardInfo /> </>}
+                        
+                        </>
                     
                 )}
             </div>
+            {(customCardAdd === 'added' && !isStartGame) && (
+                <div> 
+                    <SelectEndCard/>
+                </div>
+            )}
         </div>
     );
 };

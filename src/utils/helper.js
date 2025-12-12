@@ -1,20 +1,49 @@
+import cards from '../cards.json'
+
 
 /* Перемешиваем карты */
-const shuffleDeck = (deck) =>  {  
+const shuffleDeck = (status, deck) =>  {  
+
+    const mutableDeck = [...deck];
 
     for (let i = 0; i < deck.length; i++) {  
 
         let j = Math.floor(Math.random() * deck.length);   
-        let temp = deck[i];  
+        let temp = mutableDeck[+i];  
 
-        deck[i] = deck[j];  
-        deck[j] = temp;  
+        mutableDeck[+i] = mutableDeck[+j];  
+        mutableDeck[+j] = temp;  
     }  
-
-    return deck;
+    return {status: status, cards: mutableDeck};
 }
 
 export default shuffleDeck;
+
+
+export const getSuitList = (cardList) => {
+    const suitList = {};
+    
+    cardList.forEach(elem => {
+        if (suitList[elem.cardNumber]) {
+            suitList[elem.cardNumber]++;
+        } else {
+            suitList[elem.cardNumber] = 1;
+        }
+    });
+    return suitList;
+};
+
+export const getCardsList = () => {
+    
+    if (getInfoFromLocalSession('selectedFile').length > 0){
+
+        const cardsFromSession = getInfoFromLocalSession('selectedFile')
+        return shuffleDeck('added', cardsFromSession); 
+    }
+    else{
+        return shuffleDeck('notAdded', cards)
+    };
+  }
 
 /* 
 
@@ -24,13 +53,13 @@ export default shuffleDeck;
 
 export const getInfoFromLocalSession = (key) => {
 
-    const cardList = sessionStorage.getItem(key);
+    const info = sessionStorage.getItem(key);
 
-    if(!cardList){
+    if(!info){
         return []
     }
 
-    return JSON.parse(cardList);
+    return JSON.parse(info);
 };
 
 export const deleteInfoFromLocalSession = (key) => {

@@ -17,3 +17,9 @@ main{
     justify-content: space-between;
     color: #A8A8A8;
 }
+
+@media (max-width: 600px) {
+    main{
+        display: block;
+    }
+}

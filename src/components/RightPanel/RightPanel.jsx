@@ -1,8 +1,10 @@
 import styles from './RightPanel.module.css';
 import Rule from '../Rule/Rule';
+import { useSelector } from 'react-redux';
 
-const RightPanel = ({rules}) => {
-
+const RightPanel = () => {
+    const rules = useSelector((state) => state.game.rules);
+    
     return (
         <div className={styles.RightPanel}>
             <h3 > Кастомные правила </h3>

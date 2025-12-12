@@ -155,3 +155,10 @@
     transform: translateY(0);
     box-shadow: none;
 }
+
+@media (max-width: 600px) {
+    .card{
+      margin: 20px 10px; 
+      max-width: 95vw;
+    }
+  }
