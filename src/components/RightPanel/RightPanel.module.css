@@ -33,3 +33,9 @@
     font-weight: bold;
     color: #FF6347; 
 }
+
+@media (max-width: 600px) {
+    .RightPanel{
+        display: none;
+    }
+}

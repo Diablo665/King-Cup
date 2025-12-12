@@ -1,12 +1,16 @@
 import { useState } from "react";
 import styles from "./RulesAddForm.module.css";
+import { useDispatch } from 'react-redux';
+import { addRule } from "../../store/cardInfoSlice";
 
-const RulesAddForm = ({ onAddRules }) => {
+const RulesAddForm = () => {
+
   const [newRule, setNewRule] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddRules([newRule]);
+    dispatch(addRule(newRule));
     setNewRule('');
   };
 

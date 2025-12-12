@@ -3,8 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-   }
-   
+}
    
 
 .content {
@@ -14,30 +13,35 @@
     border-radius: 8px;
     padding: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-   }
+}
    
 .section {
     margin-bottom: 25px;
-   }
+}
    
 .subsectionTitle {
     color: #FFD700;
     font-size: 22px;
     margin: 15px 0 10px;
-   }
+}
    
 .text {
     color: #A8A8A8;
     font-size: 16px;
     line-height: 1.7;
-   }
+}
    
 .list {
     margin: 0;
     padding-left: 20px;
-   }
+}
    
 .listItem {
     margin-bottom: 10px;
     color: #fff;
-   }
+}
+
+.warning{
+    color: #fcdb22b9;
+    font-size: 18px;
+}

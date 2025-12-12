@@ -8,11 +8,12 @@ const UploadInfo = ({ isCustomCardAdd }) => {
     
     const status = {
 
-        'error': ['Ошибка загрузки файла карт', 'error', <BiError />],
+        'error': ['Ошибка загрузки карт', 'error', <BiError />],
         'added': ['Карты загружены', 'successfully', <MdDone />],
-        'notAdded': ['Карты не загружены', '', <BsClockHistory />]
+        'notAdded': ['Кастомные карты не добавлены', '', <BsClockHistory />]
 
     }
+    
     const [text, className, emog] = status[isCustomCardAdd];
 
     return(
