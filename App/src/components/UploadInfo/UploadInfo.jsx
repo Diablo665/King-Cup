@@ -2,6 +2,7 @@ import { BiError } from "react-icons/bi";
 import { MdDone } from "react-icons/md";
 import { BsClockHistory } from "react-icons/bs";
 import styles from './UploadInfo.module.css';
+import React from 'react';
 
 const UploadInfo = ({ isCustomCardAdd }) => {
     const status = {

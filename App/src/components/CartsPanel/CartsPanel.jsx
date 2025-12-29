@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './CartsPanel.module.css';
 import Card from '../Card/Card';
 import EndGame from '../EndGame/EndGame';

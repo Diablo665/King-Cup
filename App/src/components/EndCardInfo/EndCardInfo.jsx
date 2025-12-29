@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './EndCardInfo.module.css';
 import { useSelector } from 'react-redux';
 

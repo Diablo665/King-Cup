@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Rule.module.css'
 
 const Rule = ({ textRule }) => {
