@@ -70,7 +70,8 @@
     cursor: pointer;
 }
 
-.saveButton {
+.saveButton,
+.deleteButton {
     margin-top: 12px;
     padding: 12px 24px;
     background-color: #28a745;
@@ -83,8 +84,16 @@
     transition: background-color 0.2s ease;
 }
 
+.deleteButton{
+    background-color: #a72828;
+}
+
 .saveButton:hover {
     background-color: #218837;
+}
+
+.deleteButton:hover {
+    background-color: #922424;
 }
 
 @media (max-width: 700px) {

@@ -1,25 +1,38 @@
-import styles from './CardPreview.module.css'
+import styles from './CardPreview.module.css';
+import { useDispatch, useSelector} from 'react-redux';
+import { deleteCard, openEditingPanel } from '../../store/cardsSlice';
+import { saveAs } from 'file-saver'
 
 const CardPreview = () => {
+    const dispatch = useDispatch();
+    const {savedCard} = useSelector((state) => state.cards)
+    
+    const handlerEvent = (e) => {
+      if (e.target.dataset.action === 'delete') {
+        const cardId = e.target.dataset.id;
+        dispatch(deleteCard(Number(cardId)))
+      }else if(e.target.dataset.action === 'edit') {
+        const cardId = e.target.dataset.id;
+        dispatch(openEditingPanel(cardId));
+      }
+    }
 
-    const cards = [{number: 1, suit: 'T', text: 'Тестовая карта 1', rules: true},
-        {number: 2, suit: 'Z', text: 'Тестовая карта 2', rules: false},
-        {number: 3, suit: 'N', text: 'Тестовая карта 3', rules: true},
-        {number: 4, suit: 'T', text: 'Тестовая карта 4', rules: false},
-        {number: 5, suit: 'M', text: 'Тестовая карта 5', rules: true},
-        {number: 6, suit: 'T', text: 'Тестовая карта 6', rules: false}]
-
-    const onDelete = () => {
-        console.log('Удалим')
+    const downloadCards = () => {
+      const cardsJSON = JSON.stringify(savedCard);
+      const jsonBlob = new Blob([cardsJSON], { type: 'application/json;charset=utf-8' });
+      saveAs(jsonBlob, 'custom.json')
     }
 
     return (
       <div className={styles.previewContainer}>
         <h2 className={styles.title}>Список добавленных карт</h2>
         
-        {cards.length === 0 ? (
-          <p className={styles.emptyMessage}>Нет добавленных карт</p>
+        {savedCard.length === 0 ? (
+          <> 
+            <p className={styles.emptyMessage}>Нет добавленных карт</p>
+          </>
         ) : (
+          <>
           <table className={styles.table}>
             <thead>
               <tr>
@@ -30,11 +43,11 @@ const CardPreview = () => {
                 <th className={styles.th}>Действие</th>
               </tr>
             </thead>
-            <tbody>
-              {cards.map((card, index) => (
+            <tbody onClick={handlerEvent}>
+              {savedCard.map((card, index) => (
                 <tr key={card.id || index} className={styles.tr}>
-                  <td className={styles.td}>{card.number || '-'}</td>
-                  <td className={styles.td}>{card.suit || '-'}</td>
+                  <td className={styles.td}>{card.cardNumber || '-'}</td>
+                  <td className={styles.td}>{card.cardSuit || '-'}</td>
                   <td className={styles.td}>{card.text || '-'}</td>
                   <td className={styles.td}>
                     {card.rules ? 'Да' : 'Нет'}
@@ -42,16 +55,27 @@ const CardPreview = () => {
                   <td className={styles.td}>
                     <button
                       className={styles.deleteButton}
-                      onClick={onDelete}
+                      data-id={card.id}
+                      data-action="delete"
                       aria-label={`Удалить карту ${card.number} ${card.suit}`}
                     >
                       Удалить
+                    </button>
+                    <button
+                      className={styles.editButton}
+                      data-id={card.id}
+                      data-action="edit"
+                      aria-label={`Отредактировать карту ${card.number} ${card.suit}`}
+                    >
+                      Редактировать
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          <button className={styles.downloadButton} onClick={downloadCards}> Сохранить файл с картами </button> 
+          </>
         )}
       </div>
     );

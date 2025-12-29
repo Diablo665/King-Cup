@@ -49,7 +49,8 @@
     background-color: #747373;
   }
   
-  .deleteButton {
+  .deleteButton,
+  .editButton {
     padding: 6px 12px;
     background-color: #dc3545;
     color: #fff;
@@ -59,13 +60,45 @@
     font-size: 13px;
     transition: background-color 0.2s ease;
   }
+
+  .editButton{
+    background-color: #4253eb;
+  }
   
   .deleteButton:hover {
     background-color: #c82333;
   }
-  
 
-  @media (max-width: 700px) {
+  .editButton:hover{
+    background-color: #3749e9;
+  }
+
+  .downloadButton {
+    display: block;
+    margin: 16px auto 0;
+    padding: 14px 28px;
+    background-color: #218837;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.5px;
+  }
+  
+  .downloadButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(128, 234, 102, 0.4);
+  }
+  
+  .downloadButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+@media (max-width: 700px) {
     .previewContainer {
     overflow: scroll;
     width: 90%;
