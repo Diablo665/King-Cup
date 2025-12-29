@@ -134,5 +134,6 @@
 
 ## Автор 
 
-[Diablo](https://github.com/Diablo665)
-[Поддержка](support@kingcup.ru)
+- [Diablo](https://github.com/Diablo665)
+
+- [Поддержка](support@kingcup.ru)
