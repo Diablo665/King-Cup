@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Card.module.css';
 import RulesAddForm from '../RulesAddForm/RulesAddForm';
 import { useState } from 'react';

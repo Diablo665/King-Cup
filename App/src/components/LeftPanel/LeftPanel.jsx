@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './LeftPanel.module.css';
 import { useRef } from 'react';
 import UploadInfo from '../UploadInfo/UploadInfo';

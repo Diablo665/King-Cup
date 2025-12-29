@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./EndGame.module.css";
 import { useDispatch, useSelector} from "react-redux";
 import { updateStateBeforeGame } from "../../store/cardInfoSlice";

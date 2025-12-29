@@ -3,6 +3,7 @@ import { getSuitList } from '../../utils/helper';
 import { useSelector, useDispatch } from 'react-redux';
 import { setEndCards } from '../../store/cardInfoSlice';
 import { useState, useEffect } from 'react';
+import React from 'react';
 
 
 const SelectEndCard = () => {

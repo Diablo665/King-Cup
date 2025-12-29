@@ -2,13 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles.css';
 import App from './App';
+import Error404 from './errorsPage/404';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <Provider store={store}> 
-        <App />
+        <BrowserRouter>
+            <Routes> 
+                <Route path='/' element={<App />} />  
+                <Route path='*' element = {<Error404 />} />
+            </Routes>
+        </BrowserRouter>
     </Provider>
 );

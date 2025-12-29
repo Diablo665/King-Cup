@@ -1,0 +1,85 @@
+.errorPage {
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .container {
+    text-align: center;
+    max-width: 500px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    color: #6c757d;
+  }
+  
+  .title {
+    font-size: 72px;
+    font-weight: 700;
+    color: #343a40;
+    margin: 0 0 8px 0;
+  }
+  
+  .subtitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: #495057;
+    margin: 0 0 24px 0;
+  }
+  
+  .content {
+    color: #6c757d;
+    line-height: 1.6;
+  }
+  
+  .list {
+    text-align: left;
+    margin: 24px 0;
+    padding-left: 20px;
+  }
+  
+  .list li {
+    margin-bottom: 8px;
+  }
+  
+  .supportLink {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .supportLink:hover {
+    background-color: #0056b3;
+  }
+  
+
+  @media (max-width: 600px) {
+    .container {
+      margin: 16px;
+      padding: 32px 20px;
+    }
+  
+    .title {
+      font-size: 60px;
+    }
+  
+    .subtitle {
+      font-size: 20px;
+    }
+  }
+  

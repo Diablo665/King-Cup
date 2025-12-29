@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './RightPanel.module.css';
 import Rule from '../Rule/Rule';
 import { useSelector } from 'react-redux';

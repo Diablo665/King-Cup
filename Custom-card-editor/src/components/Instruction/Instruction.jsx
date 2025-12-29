@@ -2,7 +2,7 @@ import styles from "./Instruction.module.css";
 import { useState } from 'react';
 
 const Instruction = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
   
     const toggleInstruction = () => {
       setIsOpen(!isOpen);
