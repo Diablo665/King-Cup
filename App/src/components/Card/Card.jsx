@@ -10,6 +10,7 @@ const Card = ({ cardNumber, cardSuit, text, rules}) => {
 
   const [isLeaving, setIsLeaving] = useState(false);
   const [isEntering, setIsEntering] = useState(true);
+  const isAllEmpty = cardNumber.trim() === "" && cardSuit.trim() === "" && text.trim() === "";
   const dispatch = useDispatch();
   const {isRuleAdd, endCards, endCardTookValue} = useSelector((state) => state.game)
 
@@ -37,6 +38,7 @@ const Card = ({ cardNumber, cardSuit, text, rules}) => {
       isLeaving && styles.isLeaving,
       isEntering && styles.isEntering,
       isEntering && styles.isVisible,
+      isAllEmpty && styles.isAllEmpty
     ].filter(cls => cls); 
   };
 
@@ -57,11 +59,16 @@ const Card = ({ cardNumber, cardSuit, text, rules}) => {
           <span className={styles.suit}>{cardSuit}</span>
         </div>
         <div className={styles.cardContent}>
-          <p className={styles.cardText}>{text}</p>
+          <p className={styles.cardText}>{isAllEmpty ? `Тревога! В колоде появилась карта-невидимка. Ты заполнил всё… отсутствием. Браво!
+            Это карта "Баго-фича".
+            Мой план был прост: добавить проверку на пустые поля. Реальность: открыл редактор, закрыл, пошёл за чаем, вернулся через неделю и написал этот текст.
+            Теперь она — официальный символ "я потом доделаю".
+            Правило от души: по кругу каждый пьёт по 2 глотка, а вытащивший карту — 4 глотка подряд и говорит "за лень разработчика!"` : text}
+          </p>
         </div>
       </div>
 
-      {rules && !isRuleAdd && (
+      {!isAllEmpty && rules && !isRuleAdd && (
         <div className={styles.formContainer}>
           <RulesAddForm />
         </div>
