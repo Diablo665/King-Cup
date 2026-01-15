@@ -80,21 +80,6 @@ export const handleFileChange = async (event) => {
     }
 };
 
-export const handleDownload = () => {
-
-    const url = '/patternCard.json'; 
-
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'customCard.json';
-    link.style.display = 'none';
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-};
-
 const handleFileReader = async (file) => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
