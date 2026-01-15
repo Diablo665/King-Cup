@@ -2,6 +2,7 @@ import styles from './CardPreview.module.css';
 import { useDispatch, useSelector} from 'react-redux';
 import { deleteCard, openEditingPanel } from '../../store/cardsSlice';
 import { saveAs } from 'file-saver'
+import React from 'react';
 
 const CardPreview = () => {
     const dispatch = useDispatch();
