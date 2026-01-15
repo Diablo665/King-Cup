@@ -67,4 +67,4 @@
 
 - [Diablo](https://github.com/Diablo665)
 
-- [Поддержка](support@kingcup.ru)
+- Поддержка: support@kingcup.ru
