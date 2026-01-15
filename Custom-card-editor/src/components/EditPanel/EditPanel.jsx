@@ -1,4 +1,5 @@
 import styles from './EditPanel.module.css';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeEditingPanel, editSavedCard } from '../../store/cardsSlice';
 import {useState} from 'react'

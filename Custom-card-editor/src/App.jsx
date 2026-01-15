@@ -4,6 +4,7 @@ import CardPreview from './components/CardPreview/CardPreview';
 import Instruction from './components/Instruction/Instruction';
 import EditPanel from './components/EditPanel/EditPanel';
 import { useSelector } from 'react-redux';
+import React from 'react';
 
 const App = () => {
 

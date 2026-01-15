@@ -1,4 +1,5 @@
 import styles from './SettingPanel.module.css'
+import React from 'react';
 import { useRef } from 'react';
 import { handleFileChange } from '../../utils/helper';
 import { setCardsAfterUpload, setIsUploadError, setIsCardsUpload, addNewCard} from '../../store/cardsSlice';

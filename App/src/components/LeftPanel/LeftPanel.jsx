@@ -3,7 +3,7 @@ import styles from './LeftPanel.module.css';
 import { useRef } from 'react';
 import UploadInfo from '../UploadInfo/UploadInfo';
 import SelectEndCard from '../SelectEndCard/SelectEndCard';
-import { getCardsList, handleFileChange, deleteInfoFromLocalSession, handleDownload} from '../../utils/helper';
+import { getCardsList, handleFileChange, deleteInfoFromLocalSession} from '../../utils/helper';
 import { useDispatch, useSelector} from 'react-redux';
 import { updateStateBeforeGame, setCustomCardAdded, setCards, setEndCards} from '../../store/cardInfoSlice';
 import { startGame, stopGame } from '../../store/gameStatuses';
@@ -26,6 +26,10 @@ const LeftPanel = () => {
             fileInputRef.current.click();
         }
     };
+
+    const goToCustomCreateSite = () => {
+        window.location = 'https://custom.kingcup.ru/'
+    }
 
     const customGame = (target) => {
         handleFileChange(target)
@@ -99,9 +103,9 @@ const LeftPanel = () => {
                         <UploadInfo isCustomCardAdd={customCardAdd}/>
                         <button 
                             className={styles.downloadFile}
-                            onClick={handleDownload}
+                            onClick={goToCustomCreateSite}
                         >
-                            Скачать файл для ручного создания кастомных карт
+                            Создать свои карты
                         </button>
                     </>
                 ) : (
