@@ -41,7 +41,14 @@ const EditPanel = () => {
         <div className={styles.panel}>
           <h3 className={styles.title}>Редактирование карты </h3>
             <div>
-                Информация о карте: Номер {editCardInfo.cardNumber}, масть {editCardInfo.cardSuit}, текст {editCardInfo.text}, карта добавляет правило - {editCardInfo.rules ? "Да" : "Нет"}
+                Информация о карте: 
+                <ul> 
+                  <li> Номер {editCardInfo.cardNumber} </li>
+                  <li> Масть {editCardInfo.cardSuit} </li>
+                  <li> Текст {editCardInfo.text} </li>
+                  <li> Карта добавляет правило? - {editCardInfo.rules ? "Да" : "Нет"} </li>
+                </ul>
+                
             </div>
           <div className={styles.field}>
             <label className={styles.label}>Номер карты</label>

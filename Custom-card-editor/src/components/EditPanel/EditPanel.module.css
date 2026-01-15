@@ -12,8 +12,9 @@
 }
 
 .panel {
-  background-color: #ffffff;
+  background-color: rgb(94, 94, 94);
   border-radius: 12px;
+  color: #fff;
   padding: 24px;
   width: 90%;
   max-width: 500px;
@@ -36,7 +37,6 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #333;
   text-align: center;
 }
 
@@ -48,15 +48,15 @@
   display: block;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #555;
   margin-bottom: 6px;
 }
 
 .input,
 .textarea {
+  background-color: #b5b5b5;
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -71,7 +71,6 @@
 }
 
 .input::placeholder {
-  color: #aaa;
   font-style: italic;
 }
 
@@ -95,7 +94,6 @@
 
 .checkboxLabel {
   font-size: 0.95rem;
-  color: #555;
   cursor: pointer;
 }
 
@@ -109,7 +107,6 @@
 .cancelButton {
   padding: 10px 20px;
   background-color: #f44336;
-  color: white;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
@@ -124,7 +121,6 @@
 .saveButton {
   padding: 10px 20px;
   background-color: #4CAF50;
-  color: white;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
