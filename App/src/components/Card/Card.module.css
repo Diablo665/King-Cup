@@ -36,6 +36,11 @@
     animation: enter 0.5s forwards;
 }
 
+.isAllEmpty {
+    background: #5d5d5d6e;
+    box-shadow: 0 10px 20px rgb(253 255 135 / 97%);
+}
+
 @keyframes leave {
     from {
         transform: translateX(0);
