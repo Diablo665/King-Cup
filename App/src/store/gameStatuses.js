@@ -32,7 +32,7 @@ const gameStatuses = createSlice({
 
         },
     }
-})
+});
 
 export const {updateScreenSize, setisEndCardInfoOpen, setisAllEndCardsTook, startGame, stopGame} = gameStatuses.actions;
 

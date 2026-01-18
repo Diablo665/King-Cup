@@ -11,7 +11,7 @@ const UploadInfo = ({ isCustomCardAdd }) => {
         'added': ['Карты загружены', 'successfully', <MdDone />],
         'notAdded': ['Кастомные карты не добавлены', '', <BsClockHistory />]
 
-    }
+    };
     
     const [text, className, emog] = status[isCustomCardAdd];
 
@@ -21,7 +21,7 @@ const UploadInfo = ({ isCustomCardAdd }) => {
             <span> {emog} </span>
             <span> {text} </span>
         </p>
-    )
-}
+    );
+};
 
 export default UploadInfo;

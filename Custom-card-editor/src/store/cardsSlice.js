@@ -9,6 +9,7 @@ const cardSlice = createSlice({
         savedCard: cardsList,
         isUploadError: false,
         isEditingPanelOpen: false,
+        isAlertMessage: false,
         isCardsUpload: cardsList.length > 0,
         editingID: 0,
         lastID: cardsList.length > 0 ? cardsList[cardsList.length - 1].id : 0
@@ -18,8 +19,8 @@ const cardSlice = createSlice({
             state.lastID += 1;
             
             const newCard = {
-              ...action.payload,
-              id: state.lastID
+                ...action.payload,
+                id: state.lastID
             };
             state.savedCard.push(newCard);
 
@@ -32,10 +33,10 @@ const cardSlice = createSlice({
         },
 
         editSavedCard: (state, action) => {
-            console.log()
+            console.log();
             state.savedCard = state.savedCard.map((elem) => {
                 if(Number(elem.id) !== Number(action.payload.id)) {
-                    return elem
+                    return elem;
                 }
 
                 return {
@@ -44,8 +45,8 @@ const cardSlice = createSlice({
                     "cardSuit": action.payload.cardSuit,
                     "text": action.payload.text,
                     "rules": action.payload.rules
-                }
-            })
+                };
+            });
 
             sessionStorage.setItem('customCardEdit', JSON.stringify(state.savedCard));
         },
@@ -63,16 +64,25 @@ const cardSlice = createSlice({
         },
 
         openEditingPanel: (state, action) => {
+            console.log("Пришли")
             state.editingID = action.payload;
-            state.isEditingPanelOpen = true
+            state.isEditingPanelOpen = true;
         },
 
         closeEditingPanel: (state) => {
-            state.isEditingPanelOpen = false
+            state.isEditingPanelOpen = false;
+        },
+
+        openAlertMessage: (state) => {
+            state.isAlertMessage = true;
+        }, 
+
+        closeAlertMessage: (state) => {
+            state.isAlertMessage = false;
         }
     }
-}) 
+}); 
 
-export const {addNewCard, deleteCard, editSavedCard, setCardsAfterUpload, setIsUploadError, setIsCardsUpload, openEditingPanel, closeEditingPanel} = cardSlice.actions;
+export const {addNewCard, deleteCard, editSavedCard, setCardsAfterUpload, setIsUploadError, setIsCardsUpload, openEditingPanel, closeEditingPanel, openAlertMessage, closeAlertMessage} = cardSlice.actions;
 
 export default cardSlice.reducer;

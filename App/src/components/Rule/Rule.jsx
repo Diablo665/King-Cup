@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Rule.module.css'
+import styles from './Rule.module.css';
 
 const Rule = ({ textRule }) => {
 
@@ -7,8 +7,8 @@ const Rule = ({ textRule }) => {
         <div className={styles.Rule}> 
             <span> {textRule} </span>
         </div>
-    )
+    );
 
-}
+};
 
-export default Rule
+export default Rule;

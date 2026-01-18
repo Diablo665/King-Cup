@@ -8,16 +8,16 @@ import React from 'react';
 
 function App() {
 
-  return (
-    <div className="App">
-      <Header title='King Cup'/>
-      <main> 
-        <LeftPanel />
-        <CartsPanel/>
-        <RightPanel/>
-      </main>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header title='King Cup'/>
+            <main> 
+                <LeftPanel />
+                <CartsPanel/>
+                <RightPanel/>
+            </main>
+        </div>
+    );
 }
 
 export default App;

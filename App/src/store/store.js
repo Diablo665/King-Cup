@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cardInfoSlice from './cardInfoSlice'
+import cardInfoSlice from './cardInfoSlice';
 import gameStatuses from "./gameStatuses";
 
 const store = configureStore({
@@ -7,6 +7,6 @@ const store = configureStore({
         game: cardInfoSlice,
         statuses: gameStatuses
     }
-})
+});
 
 export default store;

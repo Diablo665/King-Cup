@@ -2,7 +2,7 @@ export const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
         const JSONdata = await handleFileReader(file);
-        return JSONdata
+        return JSONdata;
 
     }else{
         console.log('Ошибка добавления файла');
@@ -38,7 +38,7 @@ export const getInfoFromLocalSession = (key) => {
     const info = sessionStorage.getItem(key);
 
     if(!info){
-        return []
+        return [];
     }
 
     return JSON.parse(info);

@@ -16,7 +16,7 @@ const cardInfoSlice = createSlice({
     },
     reducers: {
         setCards: (state, actions) => {
-            state.cards = actions.payload
+            state.cards = actions.payload;
         },
 
         addRule: (state, actions) => {
@@ -27,7 +27,7 @@ const cardInfoSlice = createSlice({
         setCustomCardAdded: (state, actions) => {
             if(actions.payload === 'added'){
                 state.endCards = {};
-                state.endCardTookValue = {}
+                state.endCardTookValue = {};
             }
             state.customCardAdd = actions.payload;
         },
@@ -70,7 +70,7 @@ const cardInfoSlice = createSlice({
         }
 
     }
-})
+});
 
 export const {setCards, addRule, goToPrevCard, nextStep, updateEndCardTook, updateStateBeforeGame, setCustomCardAdded, setEndCards} = cardInfoSlice.actions;
 

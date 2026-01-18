@@ -28,43 +28,43 @@ const LeftPanel = () => {
     };
 
     const goToCustomCreateSite = () => {
-        window.location = 'https://custom.kingcup.ru/'
-    }
+        window.location = 'https://custom.kingcup.ru/';
+    };
 
     const customGame = (target) => {
         handleFileChange(target)
-        .then(
-          (customCard) => {
-            dispatch(setCustomCardAdded('added'))
-            dispatch(setCards(customCard));
-          },
-          () => dispatch(setCustomCardAdded('error'))
-        )
+            .then(
+                (customCard) => {
+                    dispatch(setCustomCardAdded('added'));
+                    dispatch(setCards(customCard));
+                },
+                () => dispatch(setCustomCardAdded('error'))
+            );
         
-      }
+    };
 
     const deleteUploadedCard = () => {
         deleteInfoFromLocalSession('selectedFile');
         dispatch(setCustomCardAdded('notAdded'));
-        dispatch(setEndCards({endCards: {"K": 4}, endTook: {"K": 0}}))
-    }
+        dispatch(setEndCards({endCards: {"K": 4}, endTook: {"K": 0}}));
+    };
 
     const start = () => {
         const {status, cards} = getCardsList();
         dispatch(updateStateBeforeGame(cards));
-        dispatch(setisAllEndCardsTook(false))
+        dispatch(setisAllEndCardsTook(false));
         dispatch(startGame());
-    }
+    };
 
     const stop = () => {
         dispatch(stopGame());
         const cards = getCardsList();
         dispatch(setCards(cards['cards']));
-    }
+    };
 
     const openCardInfo = () => {
         dispatch(setisEndCardInfoOpen());
-    }
+    };
 
     return (
         <div className={styles.LeftPanel}>
@@ -78,7 +78,7 @@ const LeftPanel = () => {
                             ref={fileInputRef}
                             style={{ display: 'none' }}
                             onChange={customGame}
-                            />
+                        />
 
                         <button 
                             className={styles.startButton} 
@@ -93,12 +93,12 @@ const LeftPanel = () => {
                             Загрузить свои карты
                         </button>
                         {customCardAdd === 'added' ? (
-                        <button 
-                            className={styles.deletedButton}
-                            onClick={deleteUploadedCard}
-                        >
+                            <button 
+                                className={styles.deletedButton}
+                                onClick={deleteUploadedCard}
+                            >
                             Удалить загруженные карты
-                        </button>
+                            </button>
                         ) : ''}
                         <UploadInfo isCustomCardAdd={customCardAdd}/>
                         <button 
@@ -109,7 +109,7 @@ const LeftPanel = () => {
                         </button>
                     </>
                 ) : (
-                        <> 
+                    <> 
 
                         {isSmallScreen ? <><MdOutlineExitToApp className={styles.endButton} onClick={stop}/> {isEndCardInfoOpen && <EndCardInfo/>} <TbInfoSquare className={styles.infoCardButton} onClick={openCardInfo}/> </> : <><button 
                             className={styles.endButton} 
@@ -118,7 +118,7 @@ const LeftPanel = () => {
                             Завершить игру
                         </button> <EndCardInfo /> </>}
                         
-                        </>
+                    </>
                     
                 )}
             </div>
