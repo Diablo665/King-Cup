@@ -8,7 +8,7 @@ const Header = ({title}) => {
                 {title}
             </h1>
         </div>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

@@ -118,6 +118,7 @@
     width: 100%;
     text-align: center;
     padding: 20px;
+    word-break: break-word;
 }
 
 .cardText {

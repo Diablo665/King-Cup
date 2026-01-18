@@ -1,4 +1,4 @@
-import cards from '../cards.json'
+import cards from '../cards.json';
 
 
 /* Перемешиваем карты */
@@ -15,7 +15,7 @@ const shuffleDeck = (status, deck) =>  {
         mutableDeck[+j] = temp;  
     }  
     return {status: status, cards: mutableDeck};
-}
+};
 
 export default shuffleDeck;
 
@@ -37,13 +37,13 @@ export const getCardsList = () => {
     
     if (getInfoFromLocalSession('selectedFile').length > 0){
 
-        const cardsFromSession = getInfoFromLocalSession('selectedFile')
+        const cardsFromSession = getInfoFromLocalSession('selectedFile');
         return shuffleDeck('added', cardsFromSession); 
     }
     else{
-        return shuffleDeck('notAdded', cards)
+        return shuffleDeck('notAdded', cards);
     };
-  }
+};
 
 /* 
 
@@ -56,7 +56,7 @@ export const getInfoFromLocalSession = (key) => {
     const info = sessionStorage.getItem(key);
 
     if(!info){
-        return []
+        return [];
     }
 
     return JSON.parse(info);
@@ -73,7 +73,7 @@ export const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
         const JSONdata = await handleFileReader(file);
-        return JSONdata
+        return JSONdata;
 
     }else{
         console.log('Ошибка добавления файла');

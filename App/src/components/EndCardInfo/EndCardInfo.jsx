@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const EndCardInfo = () => {
 
-    const {cards, endCardTookValue, endCards} = useSelector((state) => state.game)
+    const {cards, endCardTookValue, endCards} = useSelector((state) => state.game);
     
     return (
 
@@ -14,12 +14,12 @@ const EndCardInfo = () => {
             <h3> Карты завершающие игру: </h3>
             <ul> 
                 {Object.entries(endCardTookValue).map(([suit, count]) => {
-                   return <li key={suit}> Карта {suit} - {count} из {endCards[suit]}  </li>
+                    return <li key={suit}> Карта {suit} - {count} из {endCards[suit]}  </li>;
                 })}
             </ul>
            
         </div>
-    )
-}
+    );
+};
 
 export default EndCardInfo;

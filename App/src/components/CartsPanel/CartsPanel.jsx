@@ -13,78 +13,78 @@ const CartsPanel = () => {
     const dispatch = useDispatch();
     const {cards, prevCards} = useSelector((state) => state.game);
 
-    const {isSmallScreen, isAllEndCardsTook, isStartGame} = useSelector((state) => state.statuses)
+    const {isSmallScreen, isAllEndCardsTook, isStartGame} = useSelector((state) => state.statuses);
 
     const goToPrev = () => {
         if(prevCards.length > 0) {
-            dispatch(goToPrevCard())
+            dispatch(goToPrevCard());
         }
         
-    }
+    };
 
     const checkScreenSize = () => {
-      dispatch(updateScreenSize());
+        dispatch(updateScreenSize());
     };
   
     useEffect(() => {
-      checkScreenSize(); 
+        checkScreenSize(); 
   
-      const handleResize = () => {
-        checkScreenSize();
-      };
+        const handleResize = () => {
+            checkScreenSize();
+        };
   
-      window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize);
   
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     return (
-      <div className={styles.CartsPanel}>
-        {isStartGame && cards.length > 0 && !isAllEndCardsTook ? (
-          <>
-            <div className={styles.startCard}>
-              {isSmallScreen ? (
+        <div className={styles.CartsPanel}>
+            {isStartGame && cards.length > 0 && !isAllEndCardsTook ? (
                 <>
-                  <Card
-                    text={cards[0].text}
-                    cardNumber={cards[0].cardNumber}
-                    cardSuit={cards[0].cardSuit}
-                    rules={cards[0].rules}
-                  />
-                  <button
-                    onClick={goToPrev}
-                    className={styles.mobileBackCardButton}
-                  >
+                    <div className={styles.startCard}>
+                        {isSmallScreen ? (
+                            <>
+                                <Card
+                                    text={cards[0].text}
+                                    cardNumber={cards[0].cardNumber}
+                                    cardSuit={cards[0].cardSuit}
+                                    rules={cards[0].rules}
+                                />
+                                <button
+                                    onClick={goToPrev}
+                                    className={styles.mobileBackCardButton}
+                                >
                     К прошлой карте
-                  </button>
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <IoArrowBackCircleOutline
+                                    className={styles.backCardButton}
+                                    onClick={goToPrev}
+                                />
+                                <Card
+                                    text={cards[0].text}
+                                    cardNumber={cards[0].cardNumber}
+                                    cardSuit={cards[0].cardSuit}
+                                    rules={cards[0].rules}
+                                />
+                            </>
+                        )}
+                    </div>
                 </>
-              ) : (
-                <>
-                  <IoArrowBackCircleOutline
-                    className={styles.backCardButton}
-                    onClick={goToPrev}
-                  />
-                  <Card
-                    text={cards[0].text}
-                    cardNumber={cards[0].cardNumber}
-                    cardSuit={cards[0].cardSuit}
-                    rules={cards[0].rules}
-                  />
-                </>
-              )}
-            </div>
-          </>
-        ) : isStartGame &&
+            ) : isStartGame &&
           (cards.length === 0 || isAllEndCardsTook) ? (
-          <EndGame />
-        ) : (
-          <Instruction />
-        )}
-      </div>
+                    <EndGame />
+                ) : (
+                    <Instruction />
+                )}
+        </div>
     );
 
-}
+};
 
-export default CartsPanel
+export default CartsPanel;
