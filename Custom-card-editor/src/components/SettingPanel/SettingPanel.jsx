@@ -58,7 +58,6 @@ const SettingPanel = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(localCard['text'].length );
         if(localCard['text'].length > 400) {
             dispatch(openAlertMessage());
         }
